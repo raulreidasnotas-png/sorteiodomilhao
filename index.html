@@ -14,6 +14,32 @@
 <!-- UTMIFY -->
 <script src="js/latest_1.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
 
+  <!-- 🔥 CAPTURA, SALVA E INJETA FBC AUTOMATICAMENTE -->
+<script>
+(function() {
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  // captura fbclid
+  const fbclid = params.get('fbclid');
+
+  // se existir fbclid, gera e salva fbc
+  if (fbclid) {
+    const fbc = 'fb.1.' + Math.floor(Date.now() / 1000) + '.' + fbclid;
+    localStorage.setItem('fbc', fbc);
+  }
+
+  // pega fbc salvo
+  const storedFbc = localStorage.getItem('fbc');
+
+  // se tiver fbc salvo mas não estiver na URL → adiciona
+  if (storedFbc && !params.get('fbc')) {
+    params.set('fbc', storedFbc);
+    window.history.replaceState({}, '', url.toString());
+  }
+})();
+</script>
+
 <script>
 // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
 const link = 'https://pay.viiva-premios.top/LDAEDDAK';
